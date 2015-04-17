@@ -1,0 +1,9 @@
+// 高さ調節用のクラスを作成する
+// .space-h{数値}で数値分heightを取る
+$spaceHeights: 20, 40, 60;
+@each $spaceHeight in $spaceHeights {
+  .space-h#{$spaceHeight}{
+    height: #{$spaceHeight}px;
+    width: 100%;
+  }
+}
