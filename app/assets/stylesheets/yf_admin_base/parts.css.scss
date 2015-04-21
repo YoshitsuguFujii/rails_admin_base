@@ -12,3 +12,11 @@ select.bootstrap-date{
   display: inline-block;
   width: auto;
 }
+
+.loading{
+  width: 33px;
+  height: 33px;
+  background: asset-url("yf_admin_base/ajax-loader.gif") no-repeat 0 0;
+  display: inline-block;
+  -webkit-background-size: 33px auto;
+}
