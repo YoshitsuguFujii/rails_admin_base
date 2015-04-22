@@ -1,4 +1,4 @@
-module YfAdminBase
+module RailsAdminBase
   module ApplicationHelper
     def make_search_date_field(f, target)
       html = ""

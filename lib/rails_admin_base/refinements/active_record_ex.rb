@@ -1,4 +1,4 @@
-module YfAdminBase::Refinements
+module RailsAdminBase::Refinements
   module ActiveRecordEx
     refine ActiveRecord::Base do
       class GetMissingNumberFailer  < StandardError;end

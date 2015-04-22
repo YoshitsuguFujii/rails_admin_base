@@ -1,17 +1,17 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
-require "yf_admin_base/version"
+require "rails_admin_base/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "yf_admin_base"
-  s.version     = YfAdminBase::VERSION
+  s.name        = "rails_admin_base"
+  s.version     = RailsAdminBase::VERSION
   s.authors     = ["y.fujii"]
   s.email       = ["ishikurasakura@gmail.com"]
   s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of YfAdminBase."
-  s.description = "TODO: Description of YfAdminBase."
+  s.summary     = "TODO: Summary of RailsAdminBase."
+  s.description = "TODO: Description of RailsAdminBase."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]

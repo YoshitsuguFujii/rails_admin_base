@@ -1,4 +1,4 @@
-module YfAdminBase
+module RailsAdminBase
   class ApplicationController < ActionController::Base
   end
 end

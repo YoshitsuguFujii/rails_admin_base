@@ -1,23 +1,29 @@
 # 管理者用の共通部分
 
-rails engineにして切り出しました。
+主要部分をrails engineにして切り出しました。
+
+You might need jQuery, Lodash or Underscore.js and backbone.js.
 
 ### stylesheetの読み込み
+add to assets/stylesheet/application.css.scss
 
 ```
-*= require yf_admin_base/application
+*= require rails_admin_base/application
 ```
 
 ### javascriptの読み込み
+add to assets/javascript/application.js
 
 ``` 
-//= require yf_admin_base/application
+//= require rails_admin_base/application
 ```
 
 ### helperの読み込み
 
-```ruby config/initializers/yf_admin_base.rb
+add to config/initializers/rails_admin_base.rb
+
+```ruby 
 class ApplicationController < ActionController::Base
-  helper YfAdminBase::Engine.helpers
+  helper RailsAdminBase::Engine.helpers
 end
 ``` 

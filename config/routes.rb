@@ -1,2 +1,2 @@
-YfAdminBase::Engine.routes.draw do
+RailsAdminBase::Engine.routes.draw do
 end

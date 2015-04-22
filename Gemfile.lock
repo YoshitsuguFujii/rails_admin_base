@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    yf_admin_base (0.0.1)
+    rails_admin_base (0.0.1)
       rails (~> 4.2.1)
 
 GEM
@@ -103,4 +103,4 @@ PLATFORMS
 
 DEPENDENCIES
   sqlite3
-  yf_admin_base!
+  rails_admin_base!

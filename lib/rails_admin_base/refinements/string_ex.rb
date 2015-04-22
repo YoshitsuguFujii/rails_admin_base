@@ -1,4 +1,4 @@
-module YfAdminBase::Refinements
+module RailsAdminBase::Refinements
   module StringEx
     refine String do
       def numeric?
