@@ -2,7 +2,7 @@
 
 主要部分をrails engineにして切り出しました。
 
-You might need jQuery, Lodash or Underscore.js and backbone.js.
+You might need jQuery, Lodash or Underscore.js, backbone.js, fontawesome.css.
 
 ### stylesheetの読み込み
 add to assets/stylesheet/application.css.scss
