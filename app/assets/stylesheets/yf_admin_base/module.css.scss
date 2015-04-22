@@ -20,3 +20,7 @@ select.bootstrap-date{
   display: inline-block;
   -webkit-background-size: 33px auto;
 }
+
+tbody tr.clickable:hover td {
+  cursor: pointer;
+}
