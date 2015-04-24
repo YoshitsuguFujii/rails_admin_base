@@ -8,6 +8,14 @@ $spaceHeights: 20, 40, 60;
   }
 }
 
+$paddings:  5, 10;
+@each $padding in $paddings {
+  .pt#{$padding}{
+    padding-top: #{$padding}px;
+  }
+}
+
+
 select.bootstrap-date{
   display: inline-block;
   width: auto;
