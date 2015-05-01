@@ -32,3 +32,13 @@ select.bootstrap-date{
 tbody tr.clickable:hover td {
   cursor: pointer;
 }
+
+.bootbox{
+  .modal-dialog {
+    width: 1000px;
+
+    [type="number"]{
+      width: 80px;
+    }
+  }
+}
