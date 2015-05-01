@@ -19,4 +19,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.2.1"
   s.add_dependency "gon"
+  s.add_dependency "simple_form"
+  s.add_dependency "compass-rails"
 end

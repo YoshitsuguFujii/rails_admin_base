@@ -1,3 +1,4 @@
+# Gemをホスト側アプリに読み込ませる
 Gem.loaded_specs['rails_admin_base'].dependencies.each do |d|
   begin
     require d.name
