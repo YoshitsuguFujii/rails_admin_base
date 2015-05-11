@@ -15,6 +15,14 @@ class BootstrapFileUploadInput < SimpleForm::Inputs::Base
     merged_input_options.merge!({"data-remove-label": t("remove-label").html_safe})
     merged_input_options.merge!({"data-remove-class": "btn btn-warning"})
 
+    if options[:preview_image].present?
+      image = "<img src='#{options[:preview_image]}' class='file-preview-image'>"
+      merged_input_options.merge!({"data-initial-preview": image})
+
+      caption = URI.parse(options[:preview_image]).path.split("/").last
+      merged_input_options.merge!({"data-initial-caption": caption})
+    end
+
     @builder.file_field(attribute_name, merged_input_options).html_safe
   end
 end
