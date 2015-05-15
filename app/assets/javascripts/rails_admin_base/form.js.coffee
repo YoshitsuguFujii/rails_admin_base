@@ -26,7 +26,7 @@ $ ->
         dispAlertMessage(message)
         dfd.reject()
 
-  $(document).on "click", ".bootbox-ajax-dialog", (event)->
+  $(document).on "click", ".bootbox-ajax-form", (event)->
     event.preventDefault() if event
 
     if bootbox
@@ -52,14 +52,40 @@ $ ->
 
                 dfd_post = commonAjaxRequest(url, method, $form.serializeArray())
                 dfd_post.done (data) ->
-                  # ここから
                   if data.type == "success"
                     bootbox.hideAll()
-                    eval(callback_function)
+                    eval(callback_function) if callback_function
                   else
                     $(".bootbox-body").html(data.html)
                 # 自動で閉じさせない
                 return false
         bootboxModal.on "shown.bs.modal", ->
-          eval(init_callback_function)
+          eval(init_callback_function) if init_callback_function
+        bootboxModal.modal('show')
+
+
+  $(document).on "click", ".bootbox-ajax-preview", (event)->
+    event.preventDefault() if event
+
+    if bootbox
+      url = $(@).data("url")
+      init_callback_function = $(@).data("initCallbackFunction")
+      callback_function = $(@).data("callbackFunction")
+
+      send_data = _.reject $(@).closest("form").serializeArray(), (data)->
+        _.include(["_method"], data.name)
+
+      dfd = commonAjaxRequest(url, "POST", send_data)
+      dfd.done (data) =>
+        bootboxModal = bootbox.dialog
+          title: ""
+          message: data.html
+          buttons:
+            success:
+              label: "閉じる"
+              className: "btn btn-register btn-default"
+              callback: ->
+                eval(callback_function) if callback_function
+        bootboxModal.on "shown.bs.modal", ->
+          eval(init_callback_function) if init_callback_function
         bootboxModal.modal('show')
