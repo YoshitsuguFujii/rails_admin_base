@@ -1,0 +1,36 @@
+ul.rab-upload-file-cards{
+  list-style: none;
+
+  li.rab-upload-file-card{
+    float: left;
+    border: 1px solid #869495;
+    height: 135px;
+    padding: 20px;
+    width: 430px;
+    text-align: center;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    overflow: hidden;
+
+    span.time{
+      text-align: left;
+    }
+
+    span.file-name{
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: block;
+    }
+
+    .btn-inline{
+      margin-top: 10px;
+    }
+  }
+
+  &:after{
+    content: "";
+    clear: both;
+    display: block;
+  }
+}

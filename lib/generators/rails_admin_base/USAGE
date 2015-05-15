@@ -1,0 +1,1 @@
+rails generate rails_admin_base:file_uploader_install

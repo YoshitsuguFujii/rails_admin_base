@@ -1,0 +1,19 @@
+- if @upload_files.present?
+  .return-message
+  ul.rab-upload-file-cards
+    - @upload_files.each_with_index do |upload_file, idx|
+      li.rab-upload-file-card data-id=upload_file.id
+        span.time= "[#{upload_file.created_at}]"
+        br
+        span.file-name= upload_file.data_file_name
+        .btn-inline
+          = link_to t("confirm"), upload_file.file_url, class: "btn btn-default upload-file-confirm-link"
+          = link_to t("inject"), "javascript:void(0)", class: "btn btn-info upload-file-tag-injection", "data-target" => params[:target]
+          = delete_link_to(url_for(action: "destroy", id: upload_file.id), "data-remote": true)
+
+  .text-center.paginate-list-loading
+    = paginate @upload_files, remote:  true
+- else
+  | 登録されているものが見つかりませんでした
+  .text-center.paginate-list-loading
+    = paginate @upload_files, remote:  true

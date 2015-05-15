@@ -21,4 +21,6 @@ Gem::Specification.new do |s|
   s.add_dependency "gon"
   s.add_dependency "simple_form"
   s.add_dependency "compass-rails"
+  s.add_dependency "kaminari"
+  s.add_dependency "slim"
 end

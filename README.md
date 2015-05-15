@@ -27,3 +27,7 @@ class ApplicationController < ActionController::Base
   helper RailsAdminBase::Engine.helpers
 end
 ``` 
+
+
+### FileUploaderを組み込む
+rails g rails_admin_base:file_uploader_install

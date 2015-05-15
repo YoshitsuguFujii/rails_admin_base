@@ -35,5 +35,28 @@ module RailsAdminBase
       enum_list = klass.send("#{target.to_s}s")
       enum_list.keys.map{|key| klass.human_attribute_name(key)}.zip(enum_list.values)
     end
+
+    def upload_file_button_tag(options = {})
+      options[:class] ||= " btn btn-default"
+      options["data-url"] ||= rab.upload_file_index_path
+      options[:class] += " rab_upload_file"
+      iframe = '<iframe name="ajaxPostFile" style="display:none; width:0; height:0"></iframe>'.html_safe
+      iframe + link_to(t("file_upload"), "javascript:void(0)", options)
+    end
+
+    def link_to_upload_file_index(options = {})
+      options[:class] ||= " btn btn-default ml10"
+      options["data-url"] ||= rab.upload_file_index_path
+      options[:class] += " rab_uploaded_list"
+      link_to(t("upload_file_list"), "javascript:void(0)", options)
+    end
+
+    def delete_link_to(path, options = {})
+      options["data-confirm-message"] ||= "削除しますか？"
+      options[:class] ||= " btn btn-danger delete-confirm"
+      options[:class] += " delete-confirm" if options[:class].include?("delete-confirm")
+      link_to(t("destroy"), "javascript:void(0)", options) +
+      link_to("" , path, class: "hidden delete-link", method: :delete)
+    end
   end
 end
