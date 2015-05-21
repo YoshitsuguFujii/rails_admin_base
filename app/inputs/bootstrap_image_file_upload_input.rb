@@ -1,7 +1,6 @@
-class BootstrapFileUploadInput < SimpleForm::Inputs::Base
+class BootstrapImageFileUploadInput < SimpleForm::Inputs::Base
   def input(wrapper_options)
     merged_input_options = merge_wrapper_options(input_html_options, wrapper_options)
-
 
     merged_input_options.merge!({"data-browse-label": t("browse").html_safe})
     merged_input_options.merge!({"data-caption-class": "form-control col-xs-2"})
