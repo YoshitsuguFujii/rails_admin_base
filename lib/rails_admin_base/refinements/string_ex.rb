@@ -12,6 +12,10 @@ module RailsAdminBase::Refinements
       def has_numeric?
         !!(Regexp.new(/[0-9]/) =~ self.to_s)
       end
+
+      def to_b
+        self == "true"
+      end
     end
   end
 end

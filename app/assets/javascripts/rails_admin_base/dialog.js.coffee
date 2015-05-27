@@ -47,8 +47,13 @@ $ ->
       init_callback_function = $(@).data("initCallbackFunction")
       callback_function = $(@).data("callbackFunction")
 
+      images = []
+      $.each $(@).closest("form").find("img"), (idx) ->
+        images.push({name: "image[]", value: @src})
+
       send_data = _.reject $(@).closest("form").serializeArray(), (data)->
         _.include(["_method"], data.name)
+      send_data = send_data.concat(images)
 
       dfd = Rab.commonAjaxRequest(url, "POST", send_data)
       dfd.done (data) =>
