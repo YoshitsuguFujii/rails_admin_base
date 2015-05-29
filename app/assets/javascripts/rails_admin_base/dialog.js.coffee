@@ -49,7 +49,10 @@ $ ->
 
       images = []
       $.each $(@).closest("form").find("img"), (idx) ->
-        images.push({name: "image[]", value: @src})
+        if $(@).data("tempFile")
+          images.push({name: "image[]", value: $(@).data("tempFile")})
+        else
+          images.push({name: "image[]", value: @src})
 
       send_data = _.reject $(@).closest("form").serializeArray(), (data)->
         _.include(["_method"], data.name)

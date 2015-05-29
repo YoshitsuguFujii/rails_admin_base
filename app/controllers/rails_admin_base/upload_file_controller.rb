@@ -41,6 +41,34 @@ class RailsAdminBase::UploadFileController < RailsAdminBase::ApplicationControll
     render html: {status: 500, message: ex.message}.to_json
   end
 
+  def tmp_upload
+    temp_dir = ["public", "temp_file"]
+
+    # 過去のディレクトリは削除
+    dir_path = Rails.root.join( *temp_dir )
+    dir_today = Date.today.strftime("%Y%m%d")
+    Dir.glob(dir_path.join("*")).each do |dir|
+      if dir.split("/").last != dir_today && FileTest::directory?(dir)
+        FileUtils.rm_rf(dir)
+      end
+    end
+    store_dir = dir_path.join(dir_today)
+    FileUtils.mkdir_p(store_dir) unless FileTest::directory?(store_dir)
+
+    files = []
+    image_params = params[params[:paramsKey]].deep_reject{|key, value| !value.is_a?(ActionDispatch::Http::UploadedFile)}
+    image_params.each do |param_key, file_param|
+      file_name = file_param.original_filename
+      path = store_dir.join(file_name)
+      File.open(path, "wb") do |f|
+        f.write(file_param.read)
+      end
+      files << {param_key => path.to_s.gsub(Rails.root.join("public").to_s, "")}
+    end
+
+    render json: files
+  end
+
   def destroy
     upload_file = RailsAdminBase::UploadFile.find(params[:id])
     upload_file.destroy
