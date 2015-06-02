@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = RailsAdminBase::VERSION
   s.authors     = ["y.fujii"]
   s.email       = ["ishikurasakura@gmail.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of RailsAdminBase."
-  s.description = "TODO: Description of RailsAdminBase."
+  s.homepage    = "https://github.com/YoshitsuguFujii/rails_admin_base"
+  s.summary     = "管理画面共通処理"
+  s.description = "管理画面共通処理"
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
