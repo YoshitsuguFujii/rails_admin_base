@@ -25,14 +25,14 @@ module RailsAdminBase
     end
 
     def options_for_select_from_enum(klass, target)
-      enum_list = klass.send("#{target.to_s}s")
+      enum_list = klass.send("#{target.to_s.pluralize}")
       enum_list.map do |key, _value|
         [klass.human_attribute_name(key), key]
       end
     end
 
     def options_for_select_from_enum_number(klass, target)
-      enum_list = klass.send("#{target.to_s}s")
+      enum_list = klass.send("#{target.to_s.pluralize}")
       enum_list.keys.map{|key| klass.human_attribute_name(key)}.zip(enum_list.values)
     end
 
