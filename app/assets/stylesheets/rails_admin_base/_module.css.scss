@@ -27,7 +27,7 @@ $paddings:  5, 10, 15, 20;
   }
 }
 
-$margins:  5, 10, 15, 25, 30;
+$margins:  5, 10, 15, 20, 25, 30;
 @each $margin in $margins {
   .mt#{$margin}{
     margin-top: #{$margin}px;
