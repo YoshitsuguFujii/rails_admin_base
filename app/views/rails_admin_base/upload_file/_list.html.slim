@@ -7,7 +7,8 @@
         br
         span.file-name= upload_file.data_file_name
         .btn-inline
-          = link_to t("confirm"), upload_file.file_url, class: "btn btn-default upload-file-confirm-link"
+          - unless %w(.doc .docx).include?(File.extname(upload_file.file_url))
+            = link_to t("confirm"), upload_file.file_url, class: "btn btn-default upload-file-confirm-link"
           = link_to t("inject"), "javascript:void(0)", class: "btn btn-info upload-file-tag-injection", "data-target" => params[:target]
           = delete_link_to(url_for(action: "destroy", id: upload_file.id), "data-remote": true)
 
