@@ -21,6 +21,7 @@ module FileUploader
       Dir.glob(temp_dir/ "*").each do |dir|
         dir_day = dir.scan(/(\d+)_\d+/).first.map(&:to_i).first rescue 0
         if dir_day <= days.strftime('%y%m%d').to_i
+          logger.info("ディレクトリを削除します[RAB-1] -> #{dir}")
           FileUtils.rm_rf(dir)
         end
       end
@@ -66,6 +67,7 @@ module FileUploader
     dir = temp_store_dir
     path = "#{dir}/#{data_file_name}"
     File.open(path, 'wb') do |f|
+      logger.info("ファイルを作成します[RAB-2] -> #{path}")
       f.write(file.read)
     end
     self.file_path = path
@@ -75,6 +77,7 @@ module FileUploader
     src = self.file_path
     dir = store_dir
     dest = dir.join("#{data_file_name}")
+    logger.info("ファイルを移動します[RAB-3] : #{src} -> #{dest}")
     FileUtils.move(src, dest)
     self.update_columns(file_path: dest.to_s)
   end
@@ -94,15 +97,18 @@ module FileUploader
 
   def delete_file
     if self.file_path_was.present? && self.file_path_changed?
+      logger.info("ファイルを削除します[RAB-4] -> #{self.file_path_was}")
       FileUtils.rm_rf(self.file_path_was)
     end
   end
 
   def delete_tmp_dir
+    logger.info("tmpディレクトリを削除します[RAB-5] -> #{temp_store_dir}")
     FileUtils.rm_rf(temp_store_dir)
   end
 
   def delete_dir
+    logger.info("ディレクトリを削除します[RAB-6] -> #{store_dir}")
     FileUtils.rm_rf(store_dir)
   end
 end
