@@ -96,7 +96,7 @@ module FileUploader
   end
 
   def delete_file
-    if self.file_path_was.present? && self.file_path_changed?
+    if self.file_path_was.present? && self.file_path_changed? && self.data_file_name_was != self.data_file_name
       logger.info("ファイルを削除します[RAB-4] -> #{self.file_path_was}")
       FileUtils.rm_rf(self.file_path_was)
     end
