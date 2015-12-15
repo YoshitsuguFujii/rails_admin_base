@@ -22,6 +22,7 @@ class BootstrapImageFileUploadInput < SimpleForm::Inputs::Base
       merged_input_options.merge!({"data-initial-caption": caption})
     end
 
-    @builder.file_field(attribute_name, merged_input_options).html_safe
+    @builder.file_field(attribute_name, merged_input_options).html_safe +
+    @builder.hidden_field("remove_#{attribute_name}", class: "remove_image").html_safe
   end
 end

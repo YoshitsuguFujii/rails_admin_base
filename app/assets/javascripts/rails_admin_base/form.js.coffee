@@ -30,6 +30,9 @@ $ ->
     .done ( data ) ->
       $(@).closest(".form-group").find('img').data("tempFile", _.values(data[0])[0])
 
+  $(document).on 'click', '.fileinput-remove-button', (event, previewId) ->
+    $(@).parents(".bootstrap_image_file_upload").find(".remove_image").val(1)
+
   class MultiSelectWithoutCtrl
     constructor: (_this, options)->
       @url = options.url
